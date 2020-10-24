@@ -1,0 +1,5 @@
+<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+ <path d="M0 120 L50 120 L100 30 L50 30z" fill="#ff9036" />
+ <path d="M50 120 L150 120 L150 30 100 30z" fill="#1b0b0f" />
+ <path d="M100 120 L100 30 L150 30z" fill="#8c1638" />
+</svg>

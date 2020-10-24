@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "index.html"
+    },
+    {
+      "src": "/(?<slug>[^/]+)",
+      "dest": "/api/redirect?slug=$slug"
+    }
+  ]
+}

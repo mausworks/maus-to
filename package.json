@@ -1,0 +1,21 @@
+{
+  "name": "maus-to",
+  "version": "1.0.0",
+  "description": "Mausworks link shortener",
+  "engines": {
+    "node": "12.x"
+  },
+  "author": "mausworks",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/node": "^1.8.4",
+    "ajv": "^6.12.6",
+    "mongodb": "^3.6.2",
+    "nanoid": "^3.1.15",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.7.36",
+    "@types/node": "^14.14.2"
+  }
+}
