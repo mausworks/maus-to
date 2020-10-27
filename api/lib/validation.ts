@@ -25,6 +25,14 @@ const slugger = nanoid.customAlphabet(
   4
 );
 
+const ROUNDTRIP_REGEX = /^http(s)?:\/\/(www\.)?maus\.to/i;
+
+function assertNonRoundtripLink(url: string) {
+  if (ROUNDTRIP_REGEX.test(url)) {
+    throw new Error("The link may not link to maus.to");
+  }
+}
+
 export function validateSubmission(data: any): LinkSubmission {
   if (!data) {
     throw new Error("No data provided");
@@ -37,6 +45,8 @@ export function validateSubmission(data: any): LinkSubmission {
   }
 
   const submission = data as LinkSubmission;
+
+  assertNonRoundtripLink(submission.url);
 
   if (!submission.slug) {
     submission.slug = slugger();
