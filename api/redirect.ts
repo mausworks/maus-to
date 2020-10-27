@@ -1,5 +1,5 @@
 import { NowRequest, NowResponse } from "@vercel/node";
-import { connectLinkStore, LinkStore, SubmittedLink } from "../lib/store";
+import { connectLinkStore, LinkStore, SubmittedLink } from "./lib/store";
 
 let store: LinkStore | null = null;
 
