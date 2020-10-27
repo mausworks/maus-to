@@ -8,9 +8,6 @@
     "type": "git",
     "url": "https://github.com/mausworks/maus-to"
   },
-  "engines": {
-    "node": "> 12.x"
-  },
   "dependencies": {
     "@vercel/node": "^1.8.4",
     "ajv": "^6.12.6",
