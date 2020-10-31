@@ -19,6 +19,8 @@
         links = userLinks.add(link);
 
         // Seems it's only possible to clear using "null"
+        url = " "; // Otherwise this will just work once (?!)
+        slug = " ";
         url = null;
         slug = null;
       })
