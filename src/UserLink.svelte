@@ -42,7 +42,6 @@
     font-size: 12px;
     opacity: 0.6;
     word-break: break-all;
-    padding-right: 24px;
     max-width: 300px;
   }
 
