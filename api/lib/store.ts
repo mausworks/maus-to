@@ -1,4 +1,4 @@
-import mongodb, { Collection, WithId } from "mongodb";
+import mongodb, { Collection, ObjectID, WithId } from "mongodb";
 import { LinkSubmission } from "./link";
 
 export type SubmittedLink = WithId<LinkSubmission>;
@@ -6,6 +6,7 @@ export type SubmittedLink = WithId<LinkSubmission>;
 export interface LinkStore {
   find(slug: string): Promise<SubmittedLink | null>;
   create(submission: LinkSubmission): Promise<SubmittedLink>;
+  delete(id: string): Promise<boolean>;
 }
 
 function createIndexes(collection: Collection<SubmittedLink>) {
@@ -29,6 +30,11 @@ export async function connectLinkStore(): Promise<LinkStore> {
       const { insertedId } = await collection.insertOne(submission);
 
       return { ...submission, _id: insertedId };
+    },
+    async delete(id: string): Promise<boolean> {
+      const res = await collection.deleteOne({ _id: new ObjectID(id) });
+
+      return res && res.deletedCount === 1;
     },
   };
 }
