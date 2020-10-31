@@ -10,11 +10,17 @@
 
   let links = userLinks.list();
   let error = "";
+  let slug = "";
+  let url = "";
 
-  function submitLink(submission) {
+  function onSubmitted(submission) {
     postSubmission(submission)
       .then((link) => {
         links = userLinks.add(link);
+
+        // Seems it's only possible to clear using "null"
+        url = null;
+        slug = null;
       })
       .catch(({ message }) => {
         error = message;
@@ -38,7 +44,7 @@
 
 <Card>
   <h1>Shorten link</h1>
-  <ShortenerForm onSubmitted={submitLink} {error} />
+  <ShortenerForm {onSubmitted} {url} {slug} {error} />
 </Card>
 
 {#if links && links.length}

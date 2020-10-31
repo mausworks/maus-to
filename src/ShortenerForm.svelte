@@ -4,8 +4,8 @@
   export let error = "";
   export let onSubmitted = () => {};
 
-  let url = "";
-  let slug = "";
+  export let url = "";
+  export let slug = "";
 
   function submitForm(event) {
     event.preventDefault();
@@ -16,8 +16,6 @@
       url,
       slug: trimmedSlug ? trimmedSlug : undefined,
     });
-
-    url = "";
 
     return false;
   }
