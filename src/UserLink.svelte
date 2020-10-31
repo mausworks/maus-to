@@ -20,10 +20,6 @@
     border-top: none;
   }
 
-  .user-link .input-item {
-    margin: 0;
-  }
-
   .user-link input {
     font-family: "Folio Medium", sans-serif;
     border: none;
@@ -74,14 +70,12 @@
 </style>
 
 <div class="user-link" in:scale out:scale>
-  <div class="input-item">
-    <input
-      id="link-{_id}"
-      readonly
-      onclick="this.select();"
-      type="text"
-      value="https://maus.to/{slug}" />
-  </div>
+  <input
+    id="link-{_id}"
+    readonly
+    onclick="this.select();"
+    type="text"
+    value="https://maus.to/{slug}" />
   <div class="target">
     <svg viewBox="0 0 24 24">
       <path d="M16 8v-4l8 8-8 8v-4h-16l8-8h8z" />
