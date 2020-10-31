@@ -31,19 +31,19 @@
     padding: 0 6px;
   }
 
-  .original {
+  .target {
     display: flex;
     align-items: center;
   }
 
-  .original span {
+  .target span {
     font-size: 12px;
     opacity: 0.6;
     word-break: break-all;
     padding-right: 24px;
   }
 
-  .original svg {
+  .target svg {
     width: 14px;
     height: 14px;
     margin: 6px 12px 6px 6px;
@@ -82,7 +82,7 @@
       type="text"
       value="https://maus.to/{slug}" />
   </div>
-  <div class="original">
+  <div class="target">
     <svg viewBox="0 0 24 24">
       <path d="M16 8v-4l8 8-8 8v-4h-16l8-8h8z" />
     </svg>
