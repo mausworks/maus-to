@@ -17,6 +17,8 @@
       slug: trimmedSlug ? trimmedSlug : undefined,
     });
 
+    url = "";
+
     return false;
   }
 </script>
