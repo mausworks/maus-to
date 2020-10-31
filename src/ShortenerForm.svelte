@@ -2,10 +2,10 @@
   import { fade } from "svelte/transition";
 
   export let error = "";
-  export let onSubmitted = () => {};
+  export let url = "";
+  export let slug = "";
 
-  let url = "";
-  let slug = "";
+  export let onSubmitted = () => {};
 
   function submitForm(event) {
     event.preventDefault();
@@ -16,8 +16,6 @@
       url,
       slug: trimmedSlug ? trimmedSlug : undefined,
     });
-
-    url = "";
 
     return false;
   }
