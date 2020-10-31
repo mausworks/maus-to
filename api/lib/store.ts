@@ -1,4 +1,4 @@
-import mongodb, { Collection, WithId } from "mongodb";
+import mongodb, { Collection, ObjectID, WithId } from "mongodb";
 import { LinkSubmission } from "./link";
 
 export type SubmittedLink = WithId<LinkSubmission>;
@@ -32,7 +32,7 @@ export async function connectLinkStore(): Promise<LinkStore> {
       return { ...submission, _id: insertedId };
     },
     async delete(id: string): Promise<boolean> {
-      const res = await collection.deleteOne({ _id: id });
+      const res = await collection.deleteOne({ _id: new ObjectID(id) });
 
       return res && res.deletedCount === 1;
     },
