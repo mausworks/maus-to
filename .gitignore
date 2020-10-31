@@ -2,3 +2,5 @@
 .now
 .env
 node_modules/
+
+/public/build/
