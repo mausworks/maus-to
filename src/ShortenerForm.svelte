@@ -1,16 +1,16 @@
 <script>
   import { fade } from "svelte/transition";
 
-  export let error = "";
-  export let url = "";
-  export let slug = "";
+  export let error;
+  export let url;
+  export let slug;
 
   export let onSubmitted = () => {};
 
   function submitForm(event) {
     event.preventDefault();
 
-    const trimmedSlug = slug.trim();
+    const trimmedSlug = slug?.trim();
 
     onSubmitted({
       url,
