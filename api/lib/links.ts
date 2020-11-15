@@ -1,5 +1,10 @@
-import mongodb, { Collection, ObjectID, WithId } from "mongodb";
-import { LinkSubmission } from "./link";
+import { Collection, ObjectID, WithId } from "mongodb";
+import { getCollection } from "./db";
+
+export interface LinkSubmission {
+  url: string;
+  slug: string;
+}
 
 export type SubmittedLink = WithId<LinkSubmission>;
 
@@ -14,11 +19,7 @@ function createIndexes(collection: Collection<SubmittedLink>) {
 }
 
 export async function connectLinkStore(): Promise<LinkStore> {
-  const mongoURL = process.env.MONGO_URL;
-  const dbName = process.env.DB_NAME || "maus_to_dev";
-
-  const client = await mongodb.connect(mongoURL);
-  const collection = client.db(dbName).collection("links");
+  const collection = await getCollection<SubmittedLink>("links");
 
   createIndexes(collection);
 
