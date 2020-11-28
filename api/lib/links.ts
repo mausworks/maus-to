@@ -14,14 +14,9 @@ export interface LinkStore {
   delete(id: string): Promise<boolean>;
 }
 
-function createIndexes(collection: Collection<SubmittedLink>) {
-  collection.createIndex("slug", { unique: true });
-}
-
 export async function connectLinkStore(): Promise<LinkStore> {
   const collection = await getCollection<SubmittedLink>("links");
-
-  createIndexes(collection);
+  await collection.createIndex("slug", { unique: true });
 
   return {
     async find(slug: string): Promise<SubmittedLink | null> {
