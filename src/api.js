@@ -27,3 +27,13 @@ export async function deleteSubmission(linkId) {
     throw new Error(error);
   }
 }
+
+export async function fetchStats(slug) {
+  const res = await fetch(`/api/stats?slug=${slug}`);
+
+  if (res.ok) {
+    return await res.json();
+  } else {
+    return { count: 0, lastVisitedAt: null };
+  }
+}

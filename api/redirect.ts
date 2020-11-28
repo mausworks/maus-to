@@ -1,7 +1,14 @@
 import { NowRequest, NowResponse } from "@vercel/node";
-import { connectLinkStore, LinkStore, SubmittedLink } from "./lib/store";
+import {
+  connectLinkStore,
+  LinkStore,
+  LinkSubmission,
+  SubmittedLink,
+} from "./lib/links";
+import { connectVisitStore, VisitStore } from "./lib/visits";
 
-let store: LinkStore | null = null;
+let linkStore: LinkStore | null = null;
+let visitStore: VisitStore | null = null;
 
 export default function (req: NowRequest, res: NowResponse) {
   let slug = req.query["slug"];
@@ -13,6 +20,8 @@ export default function (req: NowRequest, res: NowResponse) {
   findLink(slug)
     .then((link) => {
       if (link && link.url) {
+        trackVisit(link, req);
+
         res.redirect(302, link.url);
       } else {
         res.redirect(302, "https://maus.to");
@@ -22,7 +31,18 @@ export default function (req: NowRequest, res: NowResponse) {
 }
 
 async function findLink(slug: string): Promise<SubmittedLink> {
-  store = store || (await connectLinkStore());
+  linkStore = linkStore || (await connectLinkStore());
 
-  return await store.find(slug);
+  return await linkStore.find(slug);
+}
+
+async function trackVisit(link: LinkSubmission, req: NowRequest) {
+  visitStore = visitStore || (await connectVisitStore());
+
+  await visitStore.track({
+    slug: link.slug,
+    url: link.url,
+    userAgent: req.headers["user-agent"] || "User-agent not found",
+    createdAt: Date.now(),
+  });
 }

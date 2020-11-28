@@ -1,7 +1,7 @@
 import nanoid from "nanoid";
 import Ajv, { ValidationError } from "ajv";
 
-import { LinkSubmission } from "../lib/link";
+import { LinkSubmission } from "../lib/links";
 
 export const LINK_SCHEMA = {
   type: "object",
