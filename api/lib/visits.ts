@@ -22,20 +22,15 @@ export interface VisitStore {
 
 export async function connectVisitStore(): Promise<VisitStore> {
   const collection = await getCollection<TrackedVisit>("visits");
+  await collection.createIndex("slug");
+  await collection.createIndex({ createdAt: -1 });
 
   return {
     async track(visit: Visit) {
       await collection.insertOne(visit, { w: 0 });
     },
     async stats(slug: string) {
-      const cursor = collection.find(
-        { slug },
-        {
-          sort: {
-            createdAt: -1,
-          },
-        }
-      );
+      const cursor = collection.find({ slug }, { sort: { createdAt: -1 } });
 
       const hasVisits = await cursor.hasNext();
 
