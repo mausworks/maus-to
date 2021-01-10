@@ -21,91 +21,74 @@
 
 <style>
   .user-link {
+    flex: 0 1 calc(50% - 6px);
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 12px 0;
-    margin: 0 6px;
-    border-bottom: 1px dashed #ddd;
+    background-color: rgba(8, 8, 8, 0.2);
+    padding: 24px 24px 14px 24px;
   }
 
-  .user-link:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  @media screen and (max-width: 540px) {
+    .user-link {
+      flex: 0 0 100%;
+    }
   }
 
-  .origin {
-    font-family: "Folio Medium", sans-serif;
+  .alias-url {
+    background-color: transparent;
     border: none;
-    flex: 1 1 auto;
-    padding: 0 6px;
-    width: 100%;
+    font-size: 16px;
+    height: 22px;
+    color: #effffd;
+    outline: none !important;
+    margin-bottom: 8px;
+    padding: 0;
   }
 
-  .target {
-    display: flex;
-    margin-top: 6px;
-  }
-
-  .target span {
-    font-size: 12px;
-    opacity: 0.6;
-    word-break: break-all;
-    max-width: 300px;
-  }
-
-  .target svg {
-    width: 14px;
-    height: 14px;
-    margin: 0 10px 0 6px;
-    flex: 0 0 auto;
-    opacity: 0.8;
-  }
-
-  .actions {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 14px 0 6px 0;
-  }
-
-  .actions button {
-    font-family: "Folio Medium", sans-serif;
-    border-radius: 500px;
-    border: none;
-    padding: 12px 14px 10px 14px;
-    line-height: 0.5;
-    font-size: 14px;
-    background: #efefef;
-  }
-
-  .actions button.visits-loaded {
-    background: none;
-  }
-
-  .actions .delete {
-    margin-right: 8px;
-    background-color: #d10000;
-    color: #fff;
+  .target-url {
+    font-family: "Archivo Narrow", "Roboto Condensed", sans-serif;
+    color: rgba(239, 255, 253, 0.5);
   }
 
   .discard {
-    border: none;
-    margin: 12px 0;
-    height: 24px;
-    width: 24px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: none;
+    width: 12px;
+    height: 12px;
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 8px;
   }
 
   .discard svg {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .actions {
+    margin-top: 20px;
+  }
+
+  .actions button {
+    height: 26px;
+    background: transparent;
+    border: none;
+    padding: 0 14px;
+    outline: none !important;
+    cursor: pointer;
+  }
+
+  .actions .delete {
+    background-color: #bf0d24;
+    color: #080808;
+    border-radius: 13px;
+    transition: all 250ms ease-out;
+  }
+
+  .actions .delete:hover,
+  .actions .delete:focus {
+    box-shadow: 0 2px 12px -4px #bf0d24;
   }
 </style>
 
@@ -113,18 +96,13 @@
   <div class="submission">
     <div class="info">
       <input
-        class="origin"
+        class="alias-url"
         readonly
         onclick="this.select();"
         type="text"
-        value="https://maus.to/{slug}" />
+        value="maus.to/{slug}" />
 
-      <div class="target">
-        <svg viewBox="0 0 24 24">
-          <path d="M16 8v-4l8 8-8 8v-4h-16l8-8h8z" />
-        </svg>
-        <span>{url}</span>
-      </div>
+      <div class="target-url">{url}</div>
     </div>
   </div>
 
@@ -132,9 +110,12 @@
     class="discard"
     title="Remove from your links"
     on:click={clickDiscard}>
-    <svg viewBox="0 0 24 24" clip-rule="evenodd" fill-rule="evenodd">
+    <svg viewBox="0 0 12 12">
       <path
-        d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z" />
+        stroke="#EFFFFD"
+        stroke-opacity=".2"
+        stroke-width="3"
+        d="M10 2L6 6m0 0l-4 4m4-4L2 2m4 4l4 4" />
     </svg>
   </button>
 
