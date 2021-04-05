@@ -2,7 +2,6 @@
   import { postSubmission, deleteSubmission } from "./api";
   import store from "./user-links";
 
-  import Card from "./Card.svelte";
   import ShortenerForm from "./ShortenerForm.svelte";
   import UserLink from "./UserLink.svelte";
 
@@ -49,25 +48,26 @@
 </script>
 
 <style>
-  h1 {
-    margin: 24px 0;
-    text-align: center;
-    font-size: 22px;
+  .shortened-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 12px;
+    box-sizing: border-box;
   }
 </style>
 
-<Card>
-  <h1>Shorten link</h1>
-  <ShortenerForm {error} {url} {slug} onSubmitted={submitLink} />
-</Card>
+<h1 class="section-heading">Shorten link</h1>
+<ShortenerForm {error} {url} {slug} onSubmitted={submitLink} />
 
 {#if links && links.length}
-  <Card>
+  <h1 class="section-heading">Shortened links</h1>
+  <div class="shortened-links">
     {#each links as link (link._id)}
       <UserLink
         {...link}
         clickDiscard={() => discardLink(link)}
         clickDelete={() => deleteLink(link._id)} />
     {/each}
-  </Card>
+  </div>
 {/if}

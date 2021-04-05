@@ -1,5 +1,1 @@
-<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
- <path d="M0 120 L50 120 L100 30 L50 30z" fill="#00fabb" />
- <path d="M50 120 L150 120 L150 30 100 30z" fill="#1b0b0f" />
- <path d="M100 120 L100 30 L150 30z" fill="#20ddee" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 23"><path fill="#11C3D0" d="M16.7 0v23H8.3l8.4-23z"/><path fill="#3BD7E0" d="M0 23h8.3l8.4-23H8.3L0 23z"/><path fill="#11C3D0" d="M27.9 0v23h-8.4L28 0z"/><path fill="#3BD7E0" d="M11.2 23h8.3L28 0h-8.4l-8.3 23z"/><path fill="#11C3D0" d="M39.1 0v7.9L33.6 23h-2.8L39 0z"/><path fill="#3BD7E0" d="M22.4 23h8.4L39 0h-8.3l-8.4 23z"/></svg>

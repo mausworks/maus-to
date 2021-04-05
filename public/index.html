@@ -14,41 +14,23 @@
 	<link rel="stylesheet" href="/styles/global.css">
 	<link rel="stylesheet" href="/build/bundle.css">
 
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Archivo:wght@400;500&display=swap" rel="stylesheet">
+
 	<script defer src="/build/bundle.js"></script>
 </head>
 
 <body>
-	<header id="site-header">
+	<header class="site-content" id="site-header">
 		<figure id="logo" title="maus.to - shorten link">
-			<svg
-				viewBox="0 0 75 45"
-				preserveAspectRatio="none"
-				class="mw"
-				width="75"
-				height="45"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					class="mw__left-cap"
-					d="M0 45 L25 45 L50 0 L25 0z"
-					fill="#00fabb"
-				></path>
-				<path
-					class="mw__back"
-					d="M25 45 L75 45 L75 0 50 0z"
-					fill="#1b0b0f"
-				></path>
-				<path
-					class="mw__mid-shard"
-					d="M50 45 L50 0 L75 0z"
-					fill="#20ddee"
-				></path>
-			</svg>
-
-			<figcaption>MAUS<br />.TO</figcaption>
+			<img src="./images/logo.svg" />
 		</figure>
 	</header>
 
-	<main id="content"></main>
+	<main class="site-content" id="app"></main>
+
+	<footer class="site-content" id="footer">
+		<img src="./images/mausworks-logo.svg" />
+	</footer>
 </body>
 </html>
